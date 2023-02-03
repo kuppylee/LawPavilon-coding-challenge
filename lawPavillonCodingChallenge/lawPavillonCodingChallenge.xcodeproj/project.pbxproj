@@ -136,22 +136,14 @@
 		041B5137298ACC33005414B9 /* lawPavillonCodingChallenge */ = {
 			isa = PBXGroup;
 			children = (
-				041B5138298ACC33005414B9 /* AppDelegate.swift */,
-				041B513A298ACC33005414B9 /* SceneDelegate.swift */,
-				041B513C298ACC33005414B9 /* SearchViewController.swift */,
-				041B513E298ACC33005414B9 /* Main.storyboard */,
-				041B5141298ACC35005414B9 /* Assets.xcassets */,
-				041B5143298ACC35005414B9 /* LaunchScreen.storyboard */,
+				0453F0AB298D8C1700174CFA /* delegates */,
+				0453F0AC298D8C7900174CFA /* viewControllers */,
+				0453F0AD298D8CBA00174CFA /* views */,
 				041B5146298ACC35005414B9 /* Info.plist */,
-				041B5168298C0045005414B9 /* ServiceProvider.swift */,
+				0453F0AF298D8D0600174CFA /* services */,
 				041B516C298C00DF005414B9 /* Model */,
-				041B516D298C07CD005414B9 /* DataProvider.swift */,
-				041B516F298C0EE2005414B9 /* EndPoints.swift */,
-				041B5171298C1DB1005414B9 /* Utility.swift */,
-				041B5173298C27F3005414B9 /* SearchResultViewModel.swift */,
-				0498F92E298D2EC000432B7E /* DetailsViewController.swift */,
-				0498F930298D5B1300432B7E /* SearchResultTableViewCell.swift */,
-				0498F932298D5C7700432B7E /* SearchViewControllerExtension.swift */,
+				0453F0B0298D8D1600174CFA /* resources */,
+				0453F0B1298D8D3F00174CFA /* viewModels */,
 			);
 			path = lawPavillonCodingChallenge;
 			sourceTree = "<group>";
@@ -180,6 +172,62 @@
 				0498F92C298C66B300432B7E /* UserDetailsModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		0453F0AB298D8C1700174CFA /* delegates */ = {
+			isa = PBXGroup;
+			children = (
+				041B5138298ACC33005414B9 /* AppDelegate.swift */,
+				041B513A298ACC33005414B9 /* SceneDelegate.swift */,
+			);
+			path = delegates;
+			sourceTree = "<group>";
+		};
+		0453F0AC298D8C7900174CFA /* viewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				0498F932298D5C7700432B7E /* SearchViewControllerExtension.swift */,
+				041B513C298ACC33005414B9 /* SearchViewController.swift */,
+				0498F92E298D2EC000432B7E /* DetailsViewController.swift */,
+			);
+			path = viewControllers;
+			sourceTree = "<group>";
+		};
+		0453F0AD298D8CBA00174CFA /* views */ = {
+			isa = PBXGroup;
+			children = (
+				041B5143298ACC35005414B9 /* LaunchScreen.storyboard */,
+				041B513E298ACC33005414B9 /* Main.storyboard */,
+				0498F930298D5B1300432B7E /* SearchResultTableViewCell.swift */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
+		0453F0AF298D8D0600174CFA /* services */ = {
+			isa = PBXGroup;
+			children = (
+				041B5168298C0045005414B9 /* ServiceProvider.swift */,
+			);
+			path = services;
+			sourceTree = "<group>";
+		};
+		0453F0B0298D8D1600174CFA /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				041B5141298ACC35005414B9 /* Assets.xcassets */,
+				041B516D298C07CD005414B9 /* DataProvider.swift */,
+				041B5171298C1DB1005414B9 /* Utility.swift */,
+				041B516F298C0EE2005414B9 /* EndPoints.swift */,
+			);
+			path = resources;
+			sourceTree = "<group>";
+		};
+		0453F0B1298D8D3F00174CFA /* viewModels */ = {
+			isa = PBXGroup;
+			children = (
+				041B5173298C27F3005414B9 /* SearchResultViewModel.swift */,
+			);
+			path = viewModels;
 			sourceTree = "<group>";
 		};
 		435DDFD573F0F4089C85CBD7 /* Frameworks */ = {
