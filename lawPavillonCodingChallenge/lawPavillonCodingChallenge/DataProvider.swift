@@ -9,8 +9,8 @@ import Foundation
 
 
 
-struct fetchSearchResult {
-    func getSearchResult(page: Int, perPage: Int, username: String, completionHandler: @escaping (_ result: SearchResultResponse?,_ statusCode:Int) -> Void) {
+struct FetchSearchResult {
+    func fetchSearchResult(page: Int, perPage: Int, username: String, completionHandler: @escaping (_ result: SearchResultResponse?,_ statusCode:Int) -> Void) {
         let serviceProvider = ServiceProvider()
         let searchResultUrl = ApiEndpoint.userEndpoint + "?q=\(username)&page=\(page)&per_page=\(perPage)"
         let url = URL(string: searchResultUrl)!

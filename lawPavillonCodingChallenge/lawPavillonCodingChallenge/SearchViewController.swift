@@ -6,10 +6,15 @@
 //
 
 import UIKit
+import Kingfisher
+
 
 class SearchViewController: UIViewController , UITableViewDataSource , UITableViewDelegate {
-   
     
+    var searchResultViewModel = SearchResultViewModel()
+    var page : Int = 1
+    var perPage : Int = 10
+    let loadingIndicator = UIActivityIndicatorView(style: .medium)
 
     @IBOutlet weak var searchUserTextField: UITextField!
     @IBOutlet weak var searchButton: UIButton!
@@ -22,29 +27,27 @@ class SearchViewController: UIViewController , UITableViewDataSource , UITableVi
         super.viewDidLoad()
         searchResultTableView.dataSource = self
         searchResultTableView.delegate = self
-        // Do any additional setup after loading the view.
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = searchResultTableView.dequeueReusableCell(withIdentifier: "SearchResultTableViewCell", for: indexPath) as! SearchResultTableViewCell
-        cell.userAvartar = UIImageView(image: UIImage(named: "profilePicture"))
-        cell.username.text = "Kuppylee"
-        cell.userType.text = "User"
-        return cell
-    }
-    
-    
+        searchResultDescription.text = ""
+        navigationItem.title = "Search for GitHub users"
+        navigationItem.backButtonTitle = "Back"
 
-
+    }
+    
+    @IBAction func searchButtonTapped(_ sender: UIButton) {
+        guard let username = searchUserTextField.text else {return}
+        if username == "" {
+                searchResultDescription.text = ""
+        }
+        else {
+            searchResultViewModel.getSearchResult(username: username, page: page, perPage: perPage) {
+                DispatchQueue.main.async { [weak self] in
+                    self?.searchResultDescription.text = "Search result for: \(username)"
+                    self?.searchResultTableView.reloadData()
+                }
+            }
+        }
+    }
+    
 }
 
-class SearchResultTableViewCell : UITableViewCell{
-    
-    @IBOutlet weak var userType: UILabel!
-    @IBOutlet weak var username: UILabel!
-    @IBOutlet weak var userAvartar: UIImageView!
-}
+

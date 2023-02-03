@@ -8,6 +8,7 @@
 import Foundation
 
 struct Utility {
+
     static func setPageCount(number: Int) {
         UserDefaults.standard.setValue(number, forKey: "pageCount")
     }
@@ -15,4 +16,5 @@ struct Utility {
     static func getPagesCount() -> Int {
         return UserDefaults.standard.integer(forKey: "pageCount")
     }
+    
 }

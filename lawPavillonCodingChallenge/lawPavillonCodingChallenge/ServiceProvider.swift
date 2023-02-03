@@ -7,6 +7,7 @@
 
 import Foundation
 
+
 struct ServiceProvider {
     
     func fetchAPIDataAndStatusCode<T: Decodable>(requestURL: URL, resultType: T.Type, completion: @escaping (_ result: T?,_ statusCode: Int) -> Void) {
@@ -21,14 +22,6 @@ struct ServiceProvider {
                 let decoder = JSONDecoder()
                 do {
                     if serviceResponse.statusCode ==  200 {
-                        let result = try decoder.decode(T.self, from: responseData!)
-                        completion(result, serviceResponse.statusCode)
-                    }
-                    if serviceResponse.statusCode ==  403 {
-                        let result = try decoder.decode(T.self, from: responseData!)
-                        completion(result, serviceResponse.statusCode)
-                    }
-                    if serviceResponse.statusCode ==  503 {
                         let result = try decoder.decode(T.self, from: responseData!)
                         completion(result, serviceResponse.statusCode)
                     }

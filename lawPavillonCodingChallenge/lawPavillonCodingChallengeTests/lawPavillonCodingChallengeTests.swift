@@ -9,28 +9,47 @@ import XCTest
 @testable import lawPavillonCodingChallenge
 
 final class lawPavillonCodingChallengeTests: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    
+    var searchViewController : SearchViewController!
+        override func setUp() {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            searchViewController = storyboard.instantiateViewController(identifier: "SearchViewController") as? SearchViewController
+            _ = searchViewController.view
         }
-    }
 
+    let response = SearchResultResponse(total_count: 10, incomplete_results: true, items: [])
+    let searchResultViewModel = SearchResultViewModel()
+    
+    //To test if my TableView is Instantiated
+    func testInitSearchResultTableView(){
+        XCTAssertNotNil(searchViewController.searchResultTableView)
+    }
+    
+    //    To test if my tableview dataSource is not nill
+    func testSearchResultTableViewDataSource(){
+        XCTAssertNotNil(searchViewController.searchResultTableView?.dataSource)
+    }
+    //    To test if my tableview delegate is not nill
+    func testSearchResultTableViewDelegate(){
+        XCTAssertNotNil(searchViewController.searchResultTableView?.delegate)
+    }
+    //To test if  datasource and delegate is from the same Instance
+    func testIfDataSourceAndDelegateSameInstance(){
+    XCTAssertEqual(searchViewController.searchResultTableView.dataSource as! SearchViewController, searchViewController.searchResultTableView.dataSource as! SearchViewController, "Error: Datasource and Delegate are not from the same instance")
+        }
+    // To test response model
+    func testApiResponse() {
+        XCTAssertNotNil(response)
+    }
+    // To test Search textfield
+    func testTextfield() {
+        XCTAssertEqual(searchViewController.searchUserTextField.text, "")
+    }
+    //To test the view model
+    func testViewModel(){
+        let result: () = searchResultViewModel.getSearchResult(username: "dan", page: 3 , perPage: 3, completion: {})
+        XCTAssertNotNil(result)
+        }
+    
+    
 }
