@@ -27,19 +27,24 @@ extension SearchViewController {
         return cell
     }
     
+//    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+//
+//        }
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.row == searchResultViewModel.numberOfRowsInSection(section: indexPath.section) - 1 {
-            showTableViewfooterLoader()
-            DispatchQueue.main.async { [weak self] in
-                self?.loadingIndicator.startAnimating()
-                if Utility.getPagesCount() <= self?.page ?? 1 {
-                    self?.loadingIndicator.stopAnimating()
-                } else{
-                    self?.perPage += 10
-                    self?.searchResultViewModel.getSearchResult(username: self?.searchUserTextField.text ?? "", page: self?.page ?? 1, perPage: self?.perPage ?? 1) {
-                        DispatchQueue.main.async { [self] in
-                            self?.searchResultTableView.reloadData()
-                            self?.loadingIndicator.stopAnimating()
+        if Utility.getPagesCount() > 9 {
+            if indexPath.row == searchResultViewModel.numberOfRowsInSection(section: indexPath.section) - 1 {
+                DispatchQueue.main.async { [weak self] in
+                    self?.showTableViewfooterLoader()
+                    self?.loadingIndicator.startAnimating()
+                    if Utility.getPagesCount() <= self?.page ?? 1  {
+                        self?.loadingIndicator.stopAnimating()
+                    } else{
+                        self?.perPage += 10
+                        self?.searchResultViewModel.getSearchResult(username: self?.searchUserTextField.text ?? "", page: self?.page ?? 1, perPage: self?.perPage ?? 1) {
+                            DispatchQueue.main.async { [self] in
+                                self?.searchResultTableView.reloadData()
+                                self?.loadingIndicator.stopAnimating()
+                            }
                         }
                     }
                 }
