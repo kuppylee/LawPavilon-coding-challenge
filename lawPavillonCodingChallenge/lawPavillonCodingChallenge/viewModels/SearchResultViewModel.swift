@@ -30,8 +30,6 @@ class SearchResultViewModel {
                         self?.userDetails.append(UsersDetails(avatar: avatarImage ?? "", login: loginName, userType: typeName ?? ""))
                         
                         self?.userDetails =  self?.userDetails.sorted(by: {$0.login.localizedCapitalized < $1.login.localizedCapitalized}) ?? []
-                        print("This is the user details \(String(describing: self?.userDetails))")
-                        print("This is the page count \(Utility.getPagesCount())")
                     }
                     completion()
                 }

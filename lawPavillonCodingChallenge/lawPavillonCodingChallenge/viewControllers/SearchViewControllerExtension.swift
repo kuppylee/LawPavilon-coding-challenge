@@ -20,10 +20,11 @@ extension SearchViewController {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = searchResultTableView.dequeueReusableCell(withIdentifier: "SearchResultTableViewCell", for: indexPath) as! SearchResultTableViewCell
+        let searchDetails = searchResultViewModel.cellForRowsAt(indexPath: indexPath)[indexPath.row]
         cell.selectionStyle = .none
-        cell.userAvartar.kf.setImage(with: URL(string: "\(searchResultViewModel.cellForRowsAt(indexPath: indexPath)[indexPath.row].avatar)"))
-        cell.username.text = searchResultViewModel.cellForRowsAt(indexPath: indexPath)[indexPath.row].login.localizedCapitalized
-        cell.userType.text = searchResultViewModel.cellForRowsAt(indexPath: indexPath)[indexPath.row].userType.localizedCapitalized
+        cell.userAvartar.kf.setImage(with: URL(string: "\(searchDetails.avatar)"))
+        cell.username.text = searchDetails.login.localizedCapitalized
+        cell.userType.text = searchDetails.userType.localizedCapitalized
         return cell
     }
     
