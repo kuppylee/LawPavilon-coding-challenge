@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 extension SearchViewController {
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80.0;
     }

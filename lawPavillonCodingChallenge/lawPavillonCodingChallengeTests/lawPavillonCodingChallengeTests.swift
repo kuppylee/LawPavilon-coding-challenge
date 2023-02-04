@@ -10,7 +10,8 @@ import XCTest
 
 final class lawPavillonCodingChallengeTests: XCTestCase {
     
-    var searchViewController : SearchViewController!
+     var searchViewController : SearchViewController!
+    
         override func setUp() {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             searchViewController = storyboard.instantiateViewController(identifier: "SearchViewController") as? SearchViewController
@@ -50,6 +51,7 @@ final class lawPavillonCodingChallengeTests: XCTestCase {
         let result: () = searchResultViewModel.getSearchResult(username: "dan", page: 3 , perPage: 3, completion: {})
         XCTAssertNotNil(result)
         }
+    
     
     
 }

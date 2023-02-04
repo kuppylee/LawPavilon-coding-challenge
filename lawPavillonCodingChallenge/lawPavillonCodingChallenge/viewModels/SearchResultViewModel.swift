@@ -9,13 +9,9 @@ import Foundation
 import ProgressHUD
 
 
-
-protocol SearchResultViewModelDelegate {
-    func didReceiveGetSearchResultResponse(searchResultResponse: SearchResultResponse?, statusCode: Int)
-}
 class SearchResultViewModel {
     private var userDetails:[UsersDetails] = []
-    var delegate: SearchResultViewModelDelegate?
+//    var delegate: SearchResultViewModelDelegate?
     func getSearchResult(username: String,page: Int,perPage: Int, completion: @escaping () -> Void) {
         ProgressHUD.show()
         userDetails.removeAll()
@@ -23,7 +19,6 @@ class SearchResultViewModel {
         searchResultFetcher.fetchSearchResult( page: page, perPage: perPage, username: username ) { searchResultData, statusCode in
             if statusCode == 200 {
                 DispatchQueue.main.async { [weak self] in
-                    self?.delegate?.didReceiveGetSearchResultResponse(searchResultResponse: searchResultData, statusCode: statusCode)
                     guard let searchResult = searchResultData?.items else {
                         return
                     }
