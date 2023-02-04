@@ -6,14 +6,11 @@
 //
 
 import Foundation
-import ProgressHUD
 
 
 class SearchResultViewModel {
     private var userDetails:[UsersDetails] = []
-//    var delegate: SearchResultViewModelDelegate?
     func getSearchResult(username: String,page: Int,perPage: Int, completion: @escaping () -> Void) {
-        ProgressHUD.show()
         userDetails.removeAll()
         let searchResultFetcher = FetchSearchResult()
         searchResultFetcher.fetchSearchResult( page: page, perPage: perPage, username: username ) { searchResultData, statusCode in
@@ -35,7 +32,6 @@ class SearchResultViewModel {
                         self?.userDetails =  self?.userDetails.sorted(by: {$0.login.localizedCapitalized < $1.login.localizedCapitalized}) ?? []
                     }
                     completion()
-                    ProgressHUD.dismiss()
                 }
             }
         }
